@@ -1,17 +1,43 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
+    val input = readInput("day01")
+
+    var counter = 0
+    var lastSonarValue = 0
+    var firstItem = true
+
+    input.forEach { line ->
+        val sonarValue = line.trim().toInt()
+        if (firstItem) {
+            firstItem = false
+        } else if (sonarValue > lastSonarValue) {
+            counter += 1
+        }
+        lastSonarValue = sonarValue
     }
 
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
+    println("Part1 Number increases: $counter")
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    //Part2
+    counter = 0
+    firstItem = true
+    val size = input.size
+    var loopCounter = 0
+    var lastSum = 0
 
-    val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    do {
+        val sum = sumSonarValues(input[loopCounter].toInt(), input[loopCounter + 1].toInt(), input[loopCounter + 2].toInt())
+        if (firstItem) {
+            firstItem = false
+        } else if (sum > lastSum) {
+            counter += 1
+        }
+        lastSum = sum
+        loopCounter++
+    } while (loopCounter <= size - 3)
+
+    println("Part2 Number increases: $counter")
+}
+
+fun sumSonarValues(value1: Int, value2: Int, value3: Int): Int {
+    return value1 + value2 + value3
 }
