@@ -21,13 +21,13 @@ private fun solvePart1(vents: List<Vent>) {
     println("Nicht diagonale Vents: ${notDiagonalVents.size}")
 
     val paths = mutableListOf<Pair<Int, Int>>()
-    val duplicatePaths = mutableListOf<Pair<Int, Int>>()
+    val duplicatePaths = mutableSetOf<Pair<Int, Int>>()
     for (vent in notDiagonalVents) {
         val ventPath = vent.getPath()
         for(p in ventPath) {
             if( !paths.contains(p)) {
                 paths.add(p)
-            } else if (!duplicatePaths.contains(p)) {
+            } else {
                 duplicatePaths.add(p)
             }
         }
@@ -40,13 +40,13 @@ private fun solvePart2(vents: List<Vent>) {
     println("Part2")
 
     val paths = mutableListOf<Pair<Int, Int>>()
-    val duplicatePaths = mutableListOf<Pair<Int, Int>>()
+    val duplicatePaths = mutableSetOf<Pair<Int, Int>>()
     for (vent in vents) {
         val ventPath = vent.getPath()
         for(p in ventPath) {
             if( !paths.contains(p)) {
                 paths.add(p)
-            } else if (!duplicatePaths.contains(p)) {
+            } else {
                 duplicatePaths.add(p)
             }
         }
