@@ -37,7 +37,7 @@ fun main() {
     solvePart2(input)
 }
 
-fun solvePart2(input: List<String>) {
+private fun solvePart2(input: List<String>) {
     println("Part2")
 
     val onxygenRatingBinary = findOxygenRating(input, 0)
