@@ -26,7 +26,7 @@ private fun solve(input: List<String>) {
     calculate(template)
 }
 
-fun calculate(template: String) {
+private fun calculate(template: String) {
     val charsMap = mutableMapOf<Char, Float>()
     template.forEach{
         charsMap[it] = charsMap.getOrDefault(it, 0f) + 1f
